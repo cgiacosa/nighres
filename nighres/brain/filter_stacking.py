@@ -56,7 +56,7 @@ def filter_stacking(dura_img=None, pvcsf_img=None, arteries_img=None,
 
     # make sure that saving related parameters are correct
     if save_data:
-        output_dir = _output_dir_4saving(output_dir, second_inversion)
+        output_dir = _output_dir_4saving(output_dir, img)
 
         filter_file = os.path.join(output_dir,
                         _fname_4saving(file_name=file_name,
@@ -83,7 +83,7 @@ def filter_stacking(dura_img=None, pvcsf_img=None, arteries_img=None,
     affine = load_volume(img).affine
     header = load_volume(img).header
     resolution = [x.item() for x in header.get_zooms()]
-    dimensions = header.get_shape()
+    dimensions = header.get_data_shape()
     nx = dimensions[0];
     ny = dimensions[1];
     nz = dimensions[2];
